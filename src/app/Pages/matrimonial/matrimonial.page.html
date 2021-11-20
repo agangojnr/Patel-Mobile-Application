@@ -1,0 +1,51 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start" class="ion-no-margin">
+      <ion-back-button defaultHref="tabs/home" icon="chevron-back" mode="md" class="btn-back"></ion-back-button>
+    </ion-buttons>
+    <ion-title header-title> Matrimonial</ion-title>
+  </ion-toolbar>
+  <ion-searchbar radious-searchbar placeholder="Quick Search " clearIcon="no" mode="md"
+    searchIcon="../../../assets/svg_icon/Search_icon.svg" [(ngModel)]="term"></ion-searchbar>
+
+
+</ion-header>
+
+<ion-content class="ion-padding-horizontal">
+ <div no-data *ngIf="data?.length == 0">
+    <img src="../../../assets/images/no-data-icon-10.jpg" alt="no data">
+  </div>
+
+    <ion-grid>
+    <ion-row>
+      <ion-col size="6" size-sm wrap *ngFor="let item of data |filter:term">
+        <ion-card class="ion-activatable" (click)="viewFamily(item?.user_id)">
+          <ion-ripple-effect></ion-ripple-effect>
+          <img src="../../../assets/svg_icon/avatar.svg"> 
+        
+          <ion-card-header><span class="bold">{{item?.firstname}} {{item?.midname}}</span>, {{item?.birthday | date :'dd MMMM yyyy'}}</ion-card-header>
+          <ion-card-content> <div  *ngIf="item?.marital == 1">
+        SINGLE
+      </div>
+<div  *ngIf="item?.marital == 2">
+        MARRIED
+      </div>
+      <div  *ngIf="item?.marital == 3">
+        DIVORCED
+      </div>
+      <div  *ngIf="item?.marital == 4">
+        WIDOWED
+      </div>
+  </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+
+
+
+
+
+</ion-content>
+

@@ -1,0 +1,86 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start" class="ion-no-margin">
+      <ion-back-button defaultHref="tabs/home" icon="chevron-back" mode="md" class="btn-back"></ion-back-button>
+    </ion-buttons>
+    <ion-title header-title>Add Relative</ion-title>
+  </ion-toolbar>
+
+</ion-header>
+
+<ion-content class="ion-padding-horizontal">
+
+	 <div class="profile-div">
+    <div class="camera-icon" (click)="presentActionSheet()">
+      <ion-icon name="camera-sharp"></ion-icon>
+    </div>
+    <div class="hexagon hexagon1">
+      <div class="hexagon-in1">
+        <div class="hexagon-in2"
+          [style.backgroundImage]="'url('+(imgProfile ?  imgProfile : 'http://placehold.it/100x100' )+')'">
+        </div>
+      </div>
+    </div>
+  </div>
+
+ <form #f="ngForm">
+ 	<p input-label>Name</p>
+     <ion-input custom-input type="text" placeholder="Enter Full Name" [(ngModel)]="data.mname" name="mname" required></ion-input>
+    <p class="err" *ngIf="err?.mname">{{err?.mname}}*</p>
+
+  <p input-label>Native Place</p>
+ <ion-select  custom-input  name="native_place" [(ngModel)]="data.native_place"  ok-text="Ok" cancel-text="Dismiss">
+  <ion-select-option *ngFor="let item of ndata"  value="{{item?.native_id}}">{{item?.native_name}}</ion-select-option>
+  
+ </ion-select>
+
+
+ <p input-label>Relation</p>
+ <ion-select  custom-input  name="relation" [(ngModel)]="data.relation"  ok-text="OK" cancel-text="Dismiss">
+  <ion-select-option *ngFor="let item of rdata"  value="{{item?.relation_id}}">{{item?.relation_desc}}</ion-select-option>
+  
+ </ion-select>
+
+ <p input-label>Sport Registered</p>
+ <ion-select  custom-input  name="sports_registered" [(ngModel)]="data.sports_registered"  ok-text="OK" cancel-text="Dismiss">
+  <ion-select-option *ngFor="let item of sdata"  value="{{item?.sport_id}}">{{item?.sport_name}}</ion-select-option>
+  
+ </ion-select>
+   <p input-label>Blood Group</p>
+ <ion-select custom-input  name="bgroup" [(ngModel)]="data.bgroup"  ok-text="Ok" cancel-text="Dismiss">
+  <ion-select-option value="A+" >A+</ion-select-option>
+   <ion-select-option value="A-">A-</ion-select-option>
+    <ion-select-option value="B+" >B+</ion-select-option>
+     <ion-select-option value="B-">B-</ion-select-option>
+    <ion-select-option value="O+">O+</ion-select-option>
+    <ion-select-option value="O-">O-</ion-select-option>
+    <ion-select-option value="AB+">AB+</ion-select-option>
+     <ion-select-option value="AB-">AB-</ion-select-option>
+ </ion-select>
+
+ <p input-label>DOB</p>
+     <ion-input custom-input type="text" (click)="showDatepicker()"  placeholder="Enter DOB" [(ngModel)]="data.dob" value="{{myDate}}" name="dob" required></ion-input>
+    <p class="err" *ngIf="err?.dob">{{err?.dob}}*</p>
+
+   
+
+    <p input-label>Phone Number</p>
+     <ion-input custom-input type="text" placeholder="Enter Phone Number" [(ngModel)]="data.mobile_no" name="mobile_no"></ion-input>
+  
+
+     <p input-label>Email</p>
+     <ion-input custom-input type="text" placeholder="Enter Email" [(ngModel)]="data.memail" name="memail" ></ion-input>
+        <p input-label>Nationality</p>
+     <ion-input custom-input type="text" placeholder="Enter Nationality" [(ngModel)]="data.nationality" name="nationality" ></ion-input>
+  
+
+
+
+   
+    <ion-button expand="block" class="ion-no-margin btn-general" (click)="doSaveMember()" [disabled]="!f.valid">
+      Save Data
+    </ion-button>
+  </form>
+
+ 
+</ion-content>

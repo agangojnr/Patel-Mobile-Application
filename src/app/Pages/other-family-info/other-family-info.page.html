@@ -1,0 +1,91 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-title></ion-title>
+    <ion-buttons slot="start" class="ion-no-margin">
+      <ion-back-button defaultHref="tabs/home" icon="chevron-back" mode="md" class="btn-back"></ion-back-button>
+    </ion-buttons>
+     <ion-title header-title>{{data?.firstname}} {{data?.midname}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding-horizontal">
+  <div class="hexagon hexagon1">
+    <div class="hexagon-in1">
+      <div class="hexagon-in2"
+        [style.backgroundImage]="'url('+(data?.imageUri ? data?.imageUri : 'http://placehold.it/100x100' )+')'"></div>
+    </div>
+  </div>
+ 
+  <ion-list>
+  	<ion-item lines="full">
+      
+      <ion-label>MEMBER NO:</ion-label>
+      <ion-label>{{data?.unique_id}} </ion-label>
+    </ion-item>
+
+    <ion-item lines="full" >
+       <ion-label>NATIVE:</ion-label>
+      <ion-label>{{data?.native?.native_name}}</ion-label>
+    </ion-item>
+
+      <ion-item lines="full" >
+    
+     <ion-label>DOB:</ion-label>
+     <ion-label>{{data?.birthday | date :'dd MMMM yyyy'}}</ion-label>
+    </ion-item>
+    <ion-item lines="full" >
+    
+      <ion-label>COUNTRY:</ion-label>
+      <ion-label>{{data?.county?.country_name}}</ion-label>
+    </ion-item>
+     <ion-item lines="full" >
+    
+      <ion-label>TOWN:</ion-label>
+      <ion-label>{{data?.town?.town_name}}</ion-label>
+    </ion-item>
+    <ion-item lines="full" >
+      <ion-label>BLOOD GROUP:</ion-label>
+      <ion-label>{{data?.bloodgroup}}</ion-label>
+    </ion-item>
+    <ion-item lines="full" >
+      <ion-label>PHONE:</ion-label>
+      <ion-label>{{data?.mobile}}</ion-label>
+    </ion-item>
+    <ion-item lines="full" >
+      <ion-label>EMAIL:</ion-label>
+      <ion-label>{{data?.email}}</ion-label>
+    </ion-item>
+     <ion-item lines="full" >
+       <ion-label>BUINESS:</ion-label>
+      <ion-label>{{data?.business}}</ion-label>
+    </ion-item>
+     <ion-item lines="full" >
+       <ion-label>WORK PLACE:</ion-label>
+      <ion-label>{{data?.pwork}}</ion-label>
+    </ion-item>
+   
+    
+    <!-- <ion-item lines="full" (click)="viewPage('/customer-support')">
+      <ion-icon slot="start" src="../../../assets/svg_icon/speech-bubble.svg"></ion-icon>
+      <ion-label>Customer Support</ion-label>
+    </ion-item>
+    <ion-item lines="full" (click)="viewPage('/language-list')">
+      <ion-icon slot="start" src="../../../assets/svg_icon/translate.svg"></ion-icon>
+      <ion-label>English</ion-label>
+    </ion-item> -->
+    
+  </ion-list>
+
+    <ion-fab vertical="bottom" horizontal="end" slot="fixed" mode="ios">
+    <ion-fab-button (click)="viewRelative(data?.user_id)">
+      <ion-icon src="../../../assets/svg_icon/view.svg"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
+
+</ion-content>
+<!--<ion-footer>
+  <ion-button expand="full" class="ion-no-margin btn-general" (click)="viewRelative(data?.user_id)">
+    View Family
+  </ion-button>
+</ion-footer>-->

@@ -1,0 +1,45 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start" class="ion-no-margin">
+      <ion-back-button defaultHref="tabs/home" icon="chevron-back" mode="md" class="btn-back"></ion-back-button>
+    </ion-buttons>
+    <ion-title header-title>Apply For {{catgoryName}}</ion-title>
+  </ion-toolbar>
+
+</ion-header>
+
+<ion-content class="ion-padding-horizontal">
+ <form #f="ngForm">
+  <p input-label>Field Of Interest</p>
+ <ion-select value="Education" custom-input  name="field" [(ngModel)]="data.field"  ok-text="Okey" cancel-text="Dismiss">
+  <ion-select-option value="Education">Education</ion-select-option>
+   <ion-select-option value="Ict">Ict</ion-select-option>
+    <ion-select-option value="Engineering">Engineering</ion-select-option>
+     <ion-select-option value="Mining">Mining</ion-select-option>
+    <ion-select-option value="Medicine">Medicine</ion-select-option>
+    <ion-select-option value="Agriculture">Agriculture</ion-select-option>
+    <ion-select-option value="Tourism">Tourism</ion-select-option>
+     <ion-select-option value="Hospitality">Hospitality</ion-select-option>
+ </ion-select>
+   <p input-label>Title</p>
+     <ion-input custom-input type="text" placeholder="Enter Title" [(ngModel)]="data.title" name="title" required></ion-input>
+    <p class="err" *ngIf="err?.title">{{err?.title}}*</p>
+
+    <p input-label>Budget</p>
+     <ion-input custom-input type="text" placeholder="Enter Budget" [(ngModel)]="data.budget" name="budget" required></ion-input>
+    <p class="err" *ngIf="err?.budget">{{err?.budget}}*</p>
+
+    <p input-label>Description</p>
+    <ion-textarea  custom-input rows="4" placeholder="Descibe  your Idea" [(ngModel)]="data.description" name="description" required></ion-textarea>
+    <p class="err" *ngIf="err?.description">{{err?.description}}*</p>
+    <p input-label>Business Plan</p>
+    <ion-textarea  custom-input rows="4"  placeholder="Give your business plan" [(ngModel)]="data.plan" name="plan" required></ion-textarea>
+    <p class="err" *ngIf="err?.plan">{{err?.description}}*</p>
+   
+    <ion-button expand="block" class="ion-no-margin btn-general" (click)="doBooking()" [disabled]="!f.valid">
+      Post & Make Payment
+    </ion-button>
+  </form>
+
+ 
+</ion-content>

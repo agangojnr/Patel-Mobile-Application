@@ -1,0 +1,119 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start" class="ion-no-margin">
+      <ion-back-button defaultHref="tabs/home" icon="chevron-back" mode="md" class="btn-back"></ion-back-button>
+    </ion-buttons>
+    <ion-title header-title>Application Posted</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="salon-detail ion-padding-horizontal">
+    <ion-item lines="none">
+      <ion-thumbnail slot="start">
+        <img src="../../../assets/Images/aductive_small.png" />
+      </ion-thumbnail>
+      <ion-label>
+        <h5>{{data?.branch?.name}}</h5>
+        <p>{{data?.created_at | date :'dd MMMM yyyy'}}</p>
+      </ion-label>
+    </ion-item>
+   
+  <ion-button mode="md" expand="block" class="btn-rebook ion-text-capitalize" *ngIf="data?.status==0">
+      Pending
+    </ion-button>
+    <ion-button mode="md" expand="block" class="btn-rebook ion-text-capitalize" *ngIf="data?.status==2">
+      Completed
+    </ion-button>
+    <ion-button mode="md" expand="block" class="btn-rebook ion-text-capitalize" *ngIf="data?.status==3">
+      Cancel
+    </ion-button>
+
+  </div>
+
+  <div class="ticket ion-margin-horizontal">
+    <div class="ticket__wrapper">
+      <div class="ticket__header">
+        <h4 class="title">
+          <h5 class="branch_name">{{data?.branch?.name}} <span
+              class="ion-float-right">{{data?.currency}} {{data?.total}}</span></h5>
+        </h4>
+        <p class="info-text">{{data?.branch?.address}}</p>
+      </div>
+    </div>
+    <div class="ticket__divider">
+      <div class="ticket__notch"></div>
+      <div class="ticket__notch ticket__notch--right"></div>
+    </div>
+    <div class="ticket__body">
+      <section class="ticket__section">
+ 
+
+         
+        <div class="date-section">
+          <div>
+            <p class="info-text">Booking Number</p>
+            <p class="date-label">{{data?.booking_id}}</p>
+          </div>
+          <div>
+            <p class="info-text">Payment Status</p>
+            <p class="date-label" *ngIf="data?.payment_status== 0">Pending</p>
+            <p class="date-label" *ngIf="data?.payment_status==1">Complete</p>
+          </div>
+        </div>
+       
+      </section>
+    </div>
+    <div class="ticket__divider" *ngIf="data?.status!=3">
+      <div class="ticket__notch"></div>
+      <div class="ticket__notch ticket__notch--right"></div>
+    </div>
+    <div class="ticket__footer" *ngIf="data?.status!=3">
+      <div class="ion-padding-top ion-padding-horizontal">
+    
+      <div class="date-section">
+          <div class="tittle_div">
+            <p class="info-text">Field <span class="ion-float-end">Budget</span></p>
+            <p class="date-label" >
+              {{data?.field}}
+              <span class="ion-float-end">{{data?.budget}}</span>
+            </p>
+          </div>
+        </div>
+
+
+          <div class="date-section">
+          <div class="tittle_div">
+            <p class="info-text">Application Title </p>
+            <p class="date-label" >
+              {{data?.title}}
+             
+            </p>
+          </div>
+        </div>
+
+      <div class="date-section">
+          <div class="tittle_div">
+            <p class="info-text">Description </p>
+            <p class="date-label" >
+              {{data?.description}}
+             
+            </p>
+          </div>
+        </div>
+
+            <div class="date-section">
+          <div class="tittle_div">
+            <p class="info-text">Plan </p>
+            <p class="date-label" >
+              {{data?.plan}}
+             
+            </p>
+          </div>
+        </div>
+      </div>
+      
+
+    </div>
+  </div>
+</ion-content>

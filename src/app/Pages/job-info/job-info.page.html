@@ -1,0 +1,69 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start" class="ion-no-margin">
+      <ion-back-button defaultHref="tabs/home" icon="chevron-back" mode="md" class="btn-back"></ion-back-button>
+    </ion-buttons>
+    <ion-title header-title>Job Info</ion-title>
+  </ion-toolbar>
+  <ion-searchbar radious-searchbar placeholder="Search here" clearIcon="no" mode="md"
+    searchIcon="../../../assets/svg_icon/Search_icon.svg" [(ngModel)]="term"></ion-searchbar>
+</ion-header>
+
+<ion-content class="ion-padding-horizontal">
+  <ion-refresher slot="fixed" id="refresher" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+  <div class="option-list">
+    <div class="option" (click)="presentTopratedModal()">
+      {{sortType}} <ion-icon name="chevron-down"></ion-icon>
+    </div>
+    <!--<div class="option" (click)="presentCategoryModal()">
+     {{type}} <ion-icon name="chevron-down"></ion-icon>
+    </div>-->
+  </div>
+  <h5 class="info-title">We have ({{data?.jobs}}) Job(s) Available </h5> 
+     <!-- card with content and item with person profile  -->
+      <div no-data *ngIf="data?.category?.length == 0">
+        <img src="../../../assets/images/no-data-icon-10.jpg" alt="no data">
+  </div>
+
+
+     <div class="salon-section" >
+    <ion-card  *ngFor="let item of data.category |filter:term">
+       
+        <ion-card-content>
+            <ion-card-title>
+                <div class="salon-name ion-text-center">{{item?.title}}
+                	 <h6 >{{item?.business_job_name}}</h6> 
+                </div>
+               
+            </ion-card-title>
+            <ion-row class="jobs">
+      <ion-col size="5" class="ion-no-padding">
+        <ion-icon name="calendar-outline" class="star-icon"></ion-icon>
+        <span class="everage-star-label">{{item?.last_date | date :'dd MMMM yyyy'}}</span>
+      </ion-col>
+       <ion-col size="3" class="ion-no-padding">
+        <ion-icon name="bookmark-outline" class="star-icon"></ion-icon>
+        <span class="everage-star-label">{{item?.experience}}</span>
+      </ion-col>
+      <ion-col size="4" class="ion-no-padding">
+        <ion-icon name="layers-outline" class="star-icon"></ion-icon>
+        <span class="everage-star-label">{{item?.busjobcategory?.cat_name}}</span>
+      </ion-col>
+
+     
+
+      
+       </ion-row>
+   <div class="jobs">
+            <p >{{item?.short_description}}</p>
+        </div>
+        </ion-card-content>
+         <ion-button expand="full" class="ion-no-margin btn-general" (click)="viewJob(item?.bus_job_id)">
+    View Details  
+  </ion-button>
+            </ion-card>
+        </div>
+  
+</ion-content>

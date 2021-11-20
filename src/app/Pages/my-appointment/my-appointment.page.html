@@ -1,0 +1,130 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start" class="ion-no-margin">
+      <ion-back-button defaultHref="tabs/home" icon="chevron-back" mode="md" class="btn-back"></ion-back-button>
+    </ion-buttons>
+    <ion-title header-title>My Applications</ion-title>
+  </ion-toolbar>
+  <div class="segment-section">
+    <a (click)="activeSegment='Upcoming'" [ngClass]="{active:activeSegment=='Upcoming'}">Active</a>
+    <a (click)="activeSegment='Past'" [ngClass]="{active:activeSegment=='Past'}">Won</a>
+    <a (click)="activeSegment='Cancel'" [ngClass]="{active:activeSegment=='Cancel'}">Cancel</a>
+  </div>
+</ion-header>
+
+<ion-content class="ion-padding-horizontal">
+  <ion-refresher slot="fixed" id="refresher" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+  <div *ngIf="activeSegment=='Upcoming'" class="section">
+    <div class="no-data" *ngIf="data?.upcoming?.length == 0">
+      <ion-icon class="calendar-icon" src="../../../assets/svg_icon/no_appintment.svg"></ion-icon>
+      <h5>No Application Made</h5>
+      <p>Have fun making some! <br>
+        Any application you make will show up here</p>
+
+      <ion-button class="btn-general" (click)="gotoHome()">
+        Find making application
+      </ion-button>
+    </div>
+    <div class="appoinment-section" *ngFor="let item of data?.upcoming">
+      <div class="header-section">
+        <h6 *ngIf="item?.status==1">APPROVED</h6>
+        <h6 *ngIf="item?.status==0">PENDING</h6>
+      </div>
+      <div class="body-section">
+        <ion-item mode="md" lines="none">
+          <ion-thumbnail slot="start">
+            <img [src]="item?.branch?.imageUri" />
+          </ion-thumbnail>
+          <ion-label>
+            <h5>{{item?.branch?.name}}</h5>
+             <p>{{item?.branch?.sponsor_name}}</p>
+            <p>{{item?.booking_id }}</p>
+             <p>{{item?.created_at | date :'dd MMMM yyyy'}} </p>
+            
+           
+          </ion-label>
+        </ion-item>
+      </div>
+      <div class="footer-section">
+        <p class="ion-no-margin">Total : Ksh {{item?.total}} <a class="btn-view ion-float-right"
+            (click)="viewDetail(item?.id)">View</a></p>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="activeSegment=='Past'" class="section">
+    <div class="no-data" *ngIf="data?.past?.length == 0">
+      <ion-icon class="calendar-icon" src="../../../assets/svg_icon/no_appintment.svg"></ion-icon>
+      <h5>No Won Lead</h5>
+      <p>Have fun making some! <br>
+        Any application you make will show up here</p>
+
+      <ion-button class="btn-general" (click)="gotoHome()">
+        Make Application
+      </ion-button>
+    </div>
+    <div class="appoinment-section" *ngFor="let item of data?.past">
+
+      <div class="header-section">
+        <h6>COMPLETED</h6>
+      </div>
+      <div class="body-section">
+        <ion-item mode="md" lines="none">
+          <ion-thumbnail slot="start">
+            <img [src]="item?.branch?.imageUri" />
+          </ion-thumbnail>
+       <ion-label>
+            <h5>{{item?.branch?.name}}</h5>
+              <p>{{item?.branch?.sponsor_name}}</p>
+            <p>{{item?.booking_id }}</p>
+             <p>{{item?.created_at | date :'dd MMMM yyyy'}} </p>
+            
+           
+          </ion-label>
+        </ion-item>
+      </div>
+      <div class="footer-section">
+
+        <p class="ion-no-margin">Total : {{item?.currency}}{{item?.total}} <a class="btn-view ion-float-right"
+            (click)="viewDetail(item?.id)">View</a></p>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="activeSegment=='Cancel'" class="section">
+    <div class="no-data" *ngIf="data?.cancel?.length == 0">
+      <ion-icon class="calendar-icon" src="../../../assets/svg_icon/no_appintment.svg"></ion-icon>
+      <h5>No Canceled Leads</h5>
+      <p>Have fun making some! <br>
+        Any application you make will show up here</p>
+
+      <ion-button class="btn-general" (click)="gotoHome()">
+        Make Applications
+      </ion-button>
+    </div>
+    <div class="appoinment-section" *ngFor="let item of data?.cancel">
+      <div class="header-section">
+        <h6>CANCEL</h6>
+      </div>
+      <div class="body-section">
+        <ion-item mode="md" lines="none">
+          <ion-thumbnail slot="start">
+            <img [src]="item?.branch?.imageUri" />
+          </ion-thumbnail>
+          <ion-label>
+            <h5>{{item?.branch?.name}}</h5>
+           <p>{{item?.branch?.sponsor_name}}</p>
+            <p>{{item?.booking_id }}</p>
+             <p>{{item?.created_at | date :'dd MMMM yyyy'}} </p>
+            
+           
+          </ion-label>
+        </ion-item>
+      </div>
+      <div class="footer-section">
+        <p class="ion-no-margin">Total : {{item?.currency}}{{item?.total}} <a class="btn-view ion-float-right"
+            (click)="viewDetail(item?.id)">View</a></p>
+      </div>
+    </div>
+  </div>
+</ion-content>

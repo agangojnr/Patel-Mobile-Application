@@ -1,0 +1,36 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start" class="ion-no-margin">
+      <ion-back-button defaultHref="tabs/home" icon="chevron-back" mode="md" class="btn-back"></ion-back-button>
+    </ion-buttons>
+    <ion-title header-title> Family Info</ion-title>
+  </ion-toolbar>
+  <ion-searchbar radious-searchbar placeholder="Quick Search " clearIcon="no" mode="md"
+    searchIcon="../../../assets/svg_icon/Search_icon.svg" [(ngModel)]="term"></ion-searchbar>
+
+
+</ion-header>
+
+<ion-content class="ion-padding-horizontal">
+ <div no-data *ngIf="data?.length == 0">
+    <img src="../../../assets/images/no-data-icon-10.jpg" alt="no data">
+  </div>
+
+ <ion-list>
+
+  <ion-item *ngFor="let item of data |filter:term" (click)="viewFamily(item?.user_id)" >
+  <ion-avatar slot="start">
+    <img src="../../../assets/svg_icon/avatar.svg">
+  </ion-avatar>
+  <ion-label>
+  	          <h2>{{item?.firstname}} {{item?.midname}}  </h2>
+        <!--<p>{{item?.mobile}}</p>-->
+  </ion-label>
+</ion-item>  
+
+    
+
+
+  </ion-list>
+</ion-content>
+

@@ -1,0 +1,32 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-title header-title>SORT BY</ion-title>
+    <ion-buttons slot="end" class="ion-no-margin">
+      <ion-button (click)="filter(category)" mode="md" fill="clear" class="btn-close">
+        <ion-icon slot="icon-only" name="close"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding-horizontal">
+  <ion-list class="ion-no-padding">
+    <ion-radio-group [value]="category">
+      <ion-item mode="md" lines="full">
+        <ion-label>All Categories</ion-label>
+        <ion-radio (click)="filter('All Categories')" slot="start" value="All Categories" mode="md"></ion-radio>
+      </ion-item>
+
+
+
+      <ion-item *ngFor="let item of data"  mode="md" lines="full">
+        <ion-label>{{item.cat_name}}</ion-label>
+        <ion-radio (click)="filter(item.cat_name,item.cat_id)" slot="start" value="{{item.cat_name}}" mode="md"></ion-radio>
+      </ion-item>
+
+      
+
+    
+    </ion-radio-group>
+  </ion-list>
+</ion-content>

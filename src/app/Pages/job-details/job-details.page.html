@@ -1,0 +1,62 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start" class="ion-no-margin">
+      <ion-back-button defaultHref="tabs/home" icon="chevron-back" mode="md" class="btn-back"></ion-back-button>
+    </ion-buttons>
+    <ion-title header-title>{{data?.title}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content class="ion-padding-horizontal">
+
+  <h5 class="name-text ion-text-center">{{data?.business_job_name}}</h5>
+  <ion-list>
+    <ion-item lines="full" (click)="viewPage('tabs/appointment')">
+      <ion-icon slot="start" src="../../../assets/svg_icon/calendar.svg"></ion-icon>
+      <ion-label>{{data?.last_date | date :'dd MMMM yyyy'}}</ion-label>
+    </ion-item>
+     <ion-item lines="full" (click)="viewPage('/customer-support')">
+      <ion-icon slot="start" src="../../../assets/svg_icon/speech-bubble.svg"></ion-icon>
+      <ion-label>{{data?.experience}}</ion-label>
+    </ion-item>
+
+    <ion-item lines="full" (click)="viewPage('/favorites')">
+      <ion-icon slot="start" src="../../../assets/svg_icon/heart.svg"></ion-icon>
+      <ion-label>{{data?.phone_number}}</ion-label>
+    </ion-item>
+    <ion-item lines="full" (click)="viewPage('/settings')">
+      <ion-icon slot="start" src="../../../assets/svg_icon/settings.svg"></ion-icon>
+      <ion-label>{{data?.email_address}}</ion-label>
+    </ion-item>
+   
+    <ion-item lines="full" (click)="viewPage('/language-list')">
+      <ion-icon slot="start" src="../../../assets/svg_icon/translate.svg"></ion-icon>
+      <ion-label>{{data?.vacancy}} Vaccancies</ion-label>
+    </ion-item> 
+  
+  </ion-list>
+
+
+   <ion-card>
+  
+    <ion-card-header>
+      <ion-card-title><h5>Detailed Description</h5></ion-card-title>
+    </ion-card-header>
+
+      <ion-item  lines="full">
+        <ion-text>
+        	 <p [innerHtml]="data?.long_decription"> </p>
+      
+        </ion-text>
+      
+      </ion-item>
+ 
+  </ion-card>
+
+</ion-content>
+<!--<ion-footer>
+  <ion-button expand="full" class="ion-no-margin btn-general" (click)="bookNow()">
+    Apply  Now
+  </ion-button>
+</ion-footer>-->
