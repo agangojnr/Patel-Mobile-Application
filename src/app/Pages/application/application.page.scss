@@ -1,0 +1,114 @@
+ion-header {
+    ion-toolbar {
+      border-radius: 0px 0px 20px 20px;
+      --background: var(--ion-color-dark-blue3);
+    }
+  }
+  ion-content {
+
+    .profile-div {
+      //width: fit-content;
+      //height: 1%;
+      width: 30%;
+      position: relative;
+      margin: 0px auto;
+      border: gray solid 1px;
+      border-radius: 5px;
+      .camera-icon {
+        height: 25px;
+        width: 25px;
+        background: var(--ion-color-dark-blue2);
+        border-radius: 50%;        
+        font-size: 15px;
+        color: var(--ion-color-blue);
+        padding-top: 2px;
+        //position: absolute;
+        margin: 25% 0 0 40%;
+        text-align: center;
+        //z-index: 14;
+      }
+    }
+
+   --padding-top: 20px;
+    .hexagon {
+      overflow: hidden;
+      visibility: hidden;
+      transform: rotate(120deg);
+      cursor: pointer;      
+    }
+    .hexagon-in1 {
+      overflow: hidden;
+      width: 100%;
+      height: 100%;
+      transform: rotate(-60deg);
+    }
+    .hexagon-in2 {
+      width: 100%;
+      height: 100%;
+      border-radius: 80px;
+     
+    }
+  
+    .hexagon1 {
+      width: 100px;
+      height: 30px;
+      margin: 0px auto;
+    }
+  
+    .name-text {
+      font-family: "Fivo_sans_medium";
+      color: var(--ion-color-blue);
+      margin-top: 10px;
+    }
+    .btn-edit{
+    color: var(--ion-color-white);
+  
+  
+    }
+    ion-list {
+     
+      ion-item {
+        --padding-start: 8px;
+        ion-icon {
+          color: var(--ion-color-dark-blue3);
+          font-size: 18px;
+          
+        }
+        ion-label {
+          font-size: 16px;
+          font-family: "Fivo_sans_medium";
+          color: var(--ion-color-blue);
+        }
+      }
+    }
+  
+  ion-card {
+    background-color: white;
+    margin: 1 !important;
+    padding: 0 !important;
+    width: 100%;
+  }
+
+  
+  
+  ion-grid {
+    --ion-grid-padding: 8px;
+    --ion-grid-width: 8px;
+    --ion-grid-column-padding: 8px;
+  }
+
+
+  
+  }
+
+  ion-card-subtitle{
+    color:brown;
+    font-weight: bolder;
+    font-size: large;
+  }
+
+  ion-select{
+    width: 100%;
+  }
+  
+  

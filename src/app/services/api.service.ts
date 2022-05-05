@@ -16,10 +16,19 @@ export class ApiService {
   branch_id: any;
   user_id: any;
   job_id:any;
+  ad_id:any;
+  ages:any = [];
   job_title:any;
   member_id:any;
   total:any;
   time: any = {};
+  bloodgroup: any;
+  town_id: any;
+  town_name: any;
+  business_category_id:any;
+  business_category_name:any;
+  imageUrl = "http://travellingtaphouse.co.ke/patel/public/app_images";
+  loc_imageUrl = "images/";
   constructor(private http: HttpClient) {
     if (localStorage.getItem("token")) {
       this.userToken = localStorage.getItem("token");

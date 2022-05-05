@@ -1,0 +1,19 @@
+.agelabel{
+    margin-left: 7%;  
+}
+
+.agecol{
+    padding-top: 15px;
+}
+
+
+ion-header {
+    ion-toolbar {
+      --background: var(--ion-color-dark-blue3);
+      --color:white;
+      ion-button{
+        --background: var(--ion-color-dark-blue3); 
+      }
+    }
+
+  }

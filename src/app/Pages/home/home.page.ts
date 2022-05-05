@@ -1,3 +1,4 @@
+import { Data } from '@angular/router';
 import { UtilService } from "./../../services/util.service";
 import { ApiService } from "./../../services/api.service";
 import { Component, OnInit } from "@angular/core";
@@ -10,8 +11,19 @@ import { NavController } from "@ionic/angular";
 })
 export class HomePage implements OnInit {
   data: any = {};
+  datarun: any;
   rdata: any = {};
   err: any = {};
+
+  
+
+  sliders = [
+    '../../assets/imgs/10.jpg',
+    '../../assets/imgs/11.jpg',
+    '../../assets/imgs/14.jpg',
+  ];
+
+  horizontalText = "marque text";
 
   constructor(
     private navCtrl: NavController,
@@ -20,12 +32,10 @@ export class HomePage implements OnInit {
   ) {
     this.getUserDate();
     //this.util.startLoad();
-    this.api.getDataWithToken("deals").subscribe(
-      (res: any) => {
-        if (res.success) {
-          //this.util.dismissLoader();
-          this.data = res.data;
-
+    this.api.getDataWithToken("deals").subscribe( 
+      (res: any) => { 
+        if (res.success) {           
+          this.data = res.data; 
         }
       },
       (err) => {
@@ -35,20 +45,16 @@ export class HomePage implements OnInit {
     );
   }
 
-  ngOnInit() {}
- /* doRefresh(event) {
-    this.api.getDataWithToken("home").subscribe(
-      (res: any) => {
-        if (res.success) {
-          this.data = res.data;
-          event.target.complete();
-        }
-      },
-      (err) => {
-        event.target.complete();
-      }
-    );
-  }*/
+  ngOnInit() {
+
+    setTimeout(() => {
+      this.horizontalText = "";
+
+    }, 3000);
+    
+
+  }
+
 
   viewList(id) {
     this.api.id = id.id;
@@ -56,24 +62,12 @@ export class HomePage implements OnInit {
     this.navCtrl.navigateForward("/salon-list");
   }
   getUserDate() {
-    //this.util.isUpdateProfile.subscribe((s) => {
-     /* if (!s) {
-        this.util.startLoad();
-      }*/
 
       this.api.getDataWithToken("profile").subscribe(
         (res: any) => {
           this.rdata = res;
-               console.log(res);
-
-          /*if (!s) {
-            this.util.dismissLoader();
-          }*/
         },
         (err) => {
-          /*if (!s) {
-            this.util.dismissLoader();
-          }*/
           this.err = err.error.errors;
         }
       );
@@ -107,8 +101,37 @@ export class HomePage implements OnInit {
   }
 
   
+  recipelist(){
+    this.navCtrl.navigateForward("/receipe");   
+  }
 
+  recipedetails(){
+    this.navCtrl.navigateForward("/recipe-details");   
+  }
+
+  blooddonation(){
+    this.navCtrl.navigateForward("/blood-donnation");   
+  }
+
+  application(){
+    this.navCtrl.navigateForward("/application"); 
+  }
+
+  request(){
+    this.navCtrl.navigateForward("/request"); 
+  }
+
+  communication(){
+    this.navCtrl.navigateForward("/communication"); 
+  }
   
+  viewAllads(){
+    this.navCtrl.navigateForward("/alladverts"); 
+  }
 
+  goToAdDetails(id){
+    this.api.ad_id = id;
+    this.navCtrl.navigateForward("/ad-details"); 
+  }
   
 }

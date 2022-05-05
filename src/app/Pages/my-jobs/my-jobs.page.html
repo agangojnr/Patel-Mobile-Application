@@ -1,0 +1,88 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start" class="ion-no-margin">
+      <ion-back-button defaultHref="tabs/home" icon="chevron-back" mode="md" class="btn-back"></ion-back-button>
+    </ion-buttons>
+    <ion-title header-title> My Jobs</ion-title>
+  </ion-toolbar>
+  <ion-searchbar radious-searchbar placeholder="Quick Search " clearIcon="no" mode="md"
+    searchIcon="../../../assets/svg_icon/Search_icon.svg"></ion-searchbar>
+
+</ion-header>
+
+<ion-content>
+  <div class="salon-section" >
+    <ion-card  *ngFor="let item of data.myjobs">
+       
+        <ion-card-content>
+            <ion-card-title>
+              <ion-row>
+                <ion-col size="9">
+                  <div class="salon-name ion-text-center">{{item?.jobtitle}}
+                    <h6 >{{item?.company_name}}</h6> 
+                 </div>
+                </ion-col>
+                <ion-col size="3">
+                  <ion-badge *ngIf="item?.status === 'Pending'"  color="secondary">
+                    {{item?.status}}
+                 </ion-badge>
+          
+                 <ion-badge *ngIf="item?.status === 'Rejected'"  color="danger">
+                    {{item?.status}}
+                  </ion-badge>
+          
+                  <ion-badge *ngIf="item?.status === 'Accepted'"  color="success">
+                    {{item?.status}}
+                  </ion-badge> 
+                </ion-col>
+              </ion-row>
+                
+               
+            </ion-card-title>
+            
+
+
+       <ion-row>
+        <div class="col-12 res-div">
+          <ion-label class="res-head">Job Requirements</ion-label>
+          <div class="inner_flex">
+            <ion-label class="small">{{item?.job_requirements}} </ion-label>
+          </div>          
+        </div>
+
+        <div class="col-12 res-div">
+          <ion-label class="res-head">Job Qualifications</ion-label>
+          <div class="inner_flex">
+            <ion-label class="small">{{item?.job_qualifications}} </ion-label>
+          </div>          
+        </div>
+       </ion-row>
+
+
+       <ion-row class="jobs">
+        <ion-col size="5" class="ion-no-padding">
+          <ion-icon name="calendar-outline" class="star-icon"></ion-icon>
+          <span class="everage-star-label">{{item?.appln_deadline | date :'dd MMMM yyyy'}}</span>
+        </ion-col>
+         <ion-col size="3" class="ion-no-padding">
+          <ion-icon name="bookmark-outline" class="star-icon"></ion-icon>
+          <span class="everage-star-label">{{item?.experience}}</span>
+        </ion-col>
+        <ion-col size="4" class="ion-no-padding">
+          <ion-icon name="layers-outline" class="star-icon"></ion-icon>
+          <span class="everage-star-label">Position(s) ({{item?.no_of_vacancies}})</span>
+        </ion-col>
+        </ion-row>
+
+        </ion-card-content>
+        
+            </ion-card>
+        </div>
+
+
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button color="success" (click)="addjob()">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</ion-content>

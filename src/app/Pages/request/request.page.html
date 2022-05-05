@@ -1,0 +1,96 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start" class="ion-no-margin">
+      <ion-back-button defaultHref="tabs/home" icon="chevron-back" mode="md" class="btn-back"></ion-back-button>
+    </ion-buttons>
+    <ion-title header-title>My Requests</ion-title>
+  </ion-toolbar>
+  <ion-searchbar radious-searchbar placeholder="Quick Search " clearIcon="no" mode="md"
+    searchIcon="../../../assets/svg_icon/Search_icon.svg" [(ngModel)]="term"></ion-searchbar>
+</ion-header>
+
+<ion-content class="ion-padding-horizontal">
+  
+ <ion-card *ngFor="let item of data |filter:term" >
+     <ion-card-header>
+       <ion-title color="primary">
+        {{item?.category}}
+       </ion-title>
+     </ion-card-header>
+     <ion-card-content>
+       <h2>
+         Request Info
+       
+       <ion-label>
+        <ion-badge *ngIf="item?.status === 'Pending'"  color="secondary">
+          {{item?.status}}
+       </ion-badge>
+
+       <ion-badge *ngIf="item?.status === 'Rejected'"  color="danger">
+          {{item?.status}}
+        </ion-badge>
+
+        <ion-badge *ngIf="item?.status === 'Accepted'"  color="success">
+          {{item?.status}}
+        </ion-badge>       
+       </ion-label>
+
+      </h2>
+       <ion-text>
+        {{item?.description}}
+        </ion-text>
+        
+        <ion-item>
+          Create date:
+          <ion-label color="tertiary"> {{item?.date | date :'dd MMMM yyyy'}}</ion-label>   
+         </ion-item>
+        
+     </ion-card-content>
+
+
+
+     <ion-card-content  *ngIf="item?.status === 'Rejected'" >
+      <h2>
+        Response Info
+     </h2>
+      <ion-text>
+       {{item?.response}}
+       </ion-text> 
+       <ion-item>
+        Response date:
+        <ion-label color="tertiary"> {{item?.response_date | date :'dd MMMM yyyy'}}</ion-label>   
+       </ion-item>
+          
+    </ion-card-content>
+
+    <ion-card-content  *ngIf="item?.status === 'Accepted'" >
+      <h2>
+        Response Info
+     </h2>
+      <ion-text>
+       {{item?.response}}
+       </ion-text> 
+       <ion-item>
+         Response date:
+        <ion-label color="tertiary"> {{item?.response_date | date :'dd MMMM yyyy'}}</ion-label>   
+       </ion-item>        
+    </ion-card-content>
+ </ion-card>
+
+ <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+  <ion-fab-button color="success" (click)="addrequest()">
+    <ion-icon name="add"></ion-icon>
+  </ion-fab-button>
+</ion-fab>
+
+<ion-infinite-scroll threshold="15%" (ionInfinite)="loadMore($event)">
+  <ion-infinite-scroll-content
+    loadingSpinner="bubbles"
+    loadingText="Loading more users...">
+  </ion-infinite-scroll-content>
+</ion-infinite-scroll>
+
+</ion-content>
+
+
+

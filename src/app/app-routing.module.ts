@@ -197,7 +197,84 @@ const routes: Routes = [
   {
     path: 'committee',
     loadChildren: () => import('./Pages/committee/committee.module').then( m => m.CommitteePageModule)
+  },
+  {
+    path: 'receipe',
+    loadChildren: () => import('./Pages/receipe/receipe.module').then( m => m.ReceipePageModule)
+  },
+  {
+    path: 'blood-donnation',
+    loadChildren: () => import('./Pages/blood-donnation/blood-donnation.module').then( m => m.BloodDonnationPageModule)
+  },
+  {
+    path: 'recipe-details',
+    loadChildren: () => import('./Pages/recipe-details/recipe-details.module').then( m => m.RecipeDetailsPageModule)
+  },
+  {
+    path: 'add-recipe',
+    loadChildren: () => import('./Pages/add-recipe/add-recipe.module').then( m => m.AddRecipePageModule)
+  },
+  {
+    path: 'bloodgroup-town',
+    loadChildren: () => import('./Pages/bloodgroup-town/bloodgroup-town.module').then( m => m.BloodgroupTownPageModule)
+  },
+  {
+    path: 'bgtown-members',
+    loadChildren: () => import('./Pages/bgtown-members/bgtown-members.module').then( m => m.BgtownMembersPageModule)
+  },
+  {
+    path: 'application',
+    loadChildren: () => import('./Pages/application/application.module').then( m => m.ApplicationPageModule)
+  },
+  {
+    path: 'request',
+    loadChildren: () => import('./Pages/request/request.module').then( m => m.RequestPageModule)
+  },
+  {
+    path: 'communication',
+    loadChildren: () => import('./Pages/communication/communication.module').then( m => m.CommunicationPageModule)
+  },
+  {
+    path: 'business-list',
+    loadChildren: () => import('./Pages/business-list/business-list.module').then( m => m.BusinessListPageModule)
+  },
+  {
+    path: 'add-request',
+    loadChildren: () => import('./Pages/add-request/add-request.module').then( m => m.AddRequestPageModule)
+  },
+  {
+    path: 'add-business',
+    loadChildren: () => import('./Pages/add-business/add-business.module').then( m => m.AddBusinessPageModule)
+  },
+  {
+    path: 'mybusinesses',
+    loadChildren: () => import('./Pages/mybusinesses/mybusinesses.module').then( m => m.MybusinessesPageModule)
+  },
+  {
+    path: 'my-jobs',
+    loadChildren: () => import('./Pages/my-jobs/my-jobs.module').then( m => m.MyJobsPageModule)
+  },
+  {
+    path: 'addjob',
+    loadChildren: () => import('./Pages/addjob/addjob.module').then( m => m.AddjobPageModule)
+  },
+  { 
+    path: 'myadverts',
+    loadChildren: () => import('./Pages/myadverts/myadverts.module').then( m => m.MyadvertsPageModule)
+  },
+  {
+    path: 'alladverts',
+    loadChildren: () => import('./Pages/alladverts/alladverts.module').then( m => m.AlladvertsPageModule)
+  },
+  {
+    path: 'ad-details',
+    loadChildren: () => import('./Pages/ad-details/ad-details.module').then( m => m.AdDetailsPageModule)
   }
+
+
+
+
+
 ];
 @NgModule({
   imports: [

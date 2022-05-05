@@ -28,17 +28,16 @@ export class AddRelativePage implements OnInit {
   imageUri: any;
   userName: any;
   constructor(
-  	 private navCtrl: NavController,
+  	private navCtrl: NavController,
     private api: ApiService,
     private util: UtilService,
-     private datePicker: DatePicker,
-     private camera: Camera,
+    private datePicker: DatePicker,
+    private camera: Camera,
     private actionSheetController: ActionSheetController
   	) { 
 
   	 //this.util.startLoad();
   	 
-
     this.api.getDataWithToken("nativeData").subscribe(
       (res: any) => {
         if (res.success) {
@@ -222,8 +221,7 @@ export class AddRelativePage implements OnInit {
       );
   }
 
-      doSaveMember() {
-
+  doSaveMember() {
     let info: any = {};
     info.image =  this.imageUri;
     info.mname =  this.data.mname;
@@ -236,10 +234,7 @@ export class AddRelativePage implements OnInit {
     info.memail =  this.data.memail;
     info.nationality =  this.data.nationality;
     info.memail =  this.data.memail;
-    
-
-  
-
+     
       this.util.startLoad();
     this.api.postDataWithToken("saveFamilyData", info).subscribe(
       (res: any) => {
@@ -255,13 +250,6 @@ export class AddRelativePage implements OnInit {
         this.err = err.error.errors;
       }
     );
-
-
-
-   
-
-     
-
-    }
+  }
 
 }

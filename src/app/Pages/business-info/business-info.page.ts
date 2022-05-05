@@ -48,9 +48,9 @@ typeid: any = "";
    
     this.api.getDataWithToken("businessData" ).subscribe(
       (res: any) => {
-        if (res.success) {
+        if (res.success) { 
           this.data = res.data;
-          //console.log(this.data);
+          
           event.target.complete();
         }
       },
@@ -92,12 +92,11 @@ typeid: any = "";
 
 
     // this.util.startLoad();
-    this.api.getDataWithToken("businessData").subscribe(
-      (res: any) => {
+    this.api.getDataWithToken("businessSectors").subscribe(
+      (res: any) => { //console.log(res);
         if (res.success) {
           //this.util.dismissLoader();
-          this.data = res.data;
-          //console.log("this.data: ", this.data);
+          this.data = res.data.category;
         }
       },
       (err) => {
@@ -154,5 +153,23 @@ typeid: any = "";
       //console.log(user_id);
     this.navCtrl.navigateRoot("/business-details");
   }
+
+
+  
+  businesslist(cat_id,cat_name){
+    this.api.business_category_id = cat_id;
+    this.api.business_category_name = cat_name;
+  
+    //console.log(user_id);
+  this.navCtrl.navigateRoot("/business-list");
+}
+
+
+myBusinesses(){
+  //console.log(user_id);
+this.navCtrl.navigateRoot("/mybusinesses");
+}
+
+  
 
 }

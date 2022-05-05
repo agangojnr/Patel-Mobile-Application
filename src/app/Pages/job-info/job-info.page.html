@@ -21,27 +21,27 @@
      {{type}} <ion-icon name="chevron-down"></ion-icon>
     </div>-->
   </div>
-  <h5 class="info-title">We have ({{data?.jobs}}) Job(s) Available </h5> 
+  <h5 class="info-title">We have ({{data?.noofjobs}}) Job(s) Available </h5> 
      <!-- card with content and item with person profile  -->
-      <div no-data *ngIf="data?.category?.length == 0">
+      <div no-data *ngIf="data?.jobs?.length == 0">
         <img src="../../../assets/images/no-data-icon-10.jpg" alt="no data">
   </div>
 
 
      <div class="salon-section" >
-    <ion-card  *ngFor="let item of data.category |filter:term">
+    <ion-card  *ngFor="let item of data.jobs |filter:term">
        
         <ion-card-content>
             <ion-card-title>
-                <div class="salon-name ion-text-center">{{item?.title}}
-                	 <h6 >{{item?.business_job_name}}</h6> 
+                <div class="salon-name ion-text-center">{{item?.jobtitle}}
+                	 <h6 >{{item?.company_name}}</h6> 
                 </div>
                
             </ion-card-title>
             <ion-row class="jobs">
       <ion-col size="5" class="ion-no-padding">
         <ion-icon name="calendar-outline" class="star-icon"></ion-icon>
-        <span class="everage-star-label">{{item?.last_date | date :'dd MMMM yyyy'}}</span>
+        <span class="everage-star-label">{{item?.appln_deadline | date :'dd MMMM yyyy'}}</span>
       </ion-col>
        <ion-col size="3" class="ion-no-padding">
         <ion-icon name="bookmark-outline" class="star-icon"></ion-icon>
@@ -49,21 +49,23 @@
       </ion-col>
       <ion-col size="4" class="ion-no-padding">
         <ion-icon name="layers-outline" class="star-icon"></ion-icon>
-        <span class="everage-star-label">{{item?.busjobcategory?.cat_name}}</span>
+        <span class="everage-star-label">Position(s) ({{item?.no_of_vacancies}})</span>
       </ion-col>
-
-     
-
-      
        </ion-row>
-   <div class="jobs">
-            <p >{{item?.short_description}}</p>
-        </div>
+
         </ion-card-content>
-         <ion-button expand="full" class="ion-no-margin btn-general" (click)="viewJob(item?.bus_job_id)">
-    View Details  
-  </ion-button>
+         <ion-button expand="full" class="ion-no-margin btn-general" (click)="viewJob(item?.id)">
+          View Details  
+        </ion-button>
             </ion-card>
         </div>
   
 </ion-content>
+<ion-footer class="ion-no-border">
+  <ion-toolbar>
+    <ion-button expand="block" class="ion-no-margin btn-general" (click)="myJobs()">
+      My Jobs
+      <ion-icon class="float-right" slot="end" name="chevron-forward-outline"></ion-icon>
+    </ion-button>
+  </ion-toolbar>
+</ion-footer>

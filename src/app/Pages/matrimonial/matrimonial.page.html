@@ -5,10 +5,19 @@
     </ion-buttons>
     <ion-title header-title> Matrimonial</ion-title>
   </ion-toolbar>
-  <ion-searchbar radious-searchbar placeholder="Quick Search " clearIcon="no" mode="md"
-    searchIcon="../../../assets/svg_icon/Search_icon.svg" [(ngModel)]="term"></ion-searchbar>
-
-
+  <ion-row>
+    <ion-col size="4">
+      <ion-button expand="full" (click)="_openModal()"> 
+        <ion-icon slot="start" name="filter-outline"></ion-icon> Filter
+        </ion-button>
+    </ion-col>
+    <ion-col size="8">
+      <ion-searchbar radious-searchbar placeholder="Quick Search " clearIcon="no" mode="md"
+      searchIcon="../../../assets/svg_icon/Search_icon.svg" [(ngModel)]="term"></ion-searchbar>
+    
+    </ion-col>
+  </ion-row>
+  
 </ion-header>
 
 <ion-content class="ion-padding-horizontal">
@@ -23,27 +32,45 @@
           <ion-ripple-effect></ion-ripple-effect>
           <img src="../../../assets/svg_icon/avatar.svg"> 
         
-          <ion-card-header><span class="bold">{{item?.firstname}} {{item?.midname}}</span>, {{item?.birthday | date :'dd MMMM yyyy'}}</ion-card-header>
+          <ion-card-header>
+            <span class="bold">{{item?.firstname}} {{item?.midname}}</span>&nbsp;&nbsp;&nbsp;
+            <ion-label color="info">({{item?.age}} yrs)</ion-label>
+          </ion-card-header>
           <ion-card-content> <div  *ngIf="item?.marital == 1">
         SINGLE
-      </div>
-<div  *ngIf="item?.marital == 2">
-        MARRIED
-      </div>
-      <div  *ngIf="item?.marital == 3">
-        DIVORCED
-      </div>
-      <div  *ngIf="item?.marital == 4">
-        WIDOWED
-      </div>
-  </ion-card-content>
-        </ion-card>
-      </ion-col>
-    </ion-row>
+          </div>
+        <div  *ngIf="item?.marital == 2">
+            MARRIED
+          </div>
+          <div  *ngIf="item?.marital == 3">
+            DIVORCED
+          </div>
+          <div  *ngIf="item?.marital == 4">
+            WIDOWED
+          </div>
+      </ion-card-content>
+            </ion-card>
+          </ion-col>
+        </ion-row>
   </ion-grid>
 
 
-
+  <ion-fab vertical="bottom" horizontal="start" slot="fixed">
+    <ion-fab-button color="success">
+      <ion-icon name="settings"></ion-icon>
+    </ion-fab-button>
+    <ion-fab-list side="top">
+      <ion-button color="warning" (click)="removefromMatromonial()" *ngIf="matri == 'yes'">
+        <ion-icon name="remove-outline"></ion-icon>
+        <ion-label>Remove</ion-label>
+      </ion-button>
+      <ion-button color="primary" (click)="addtoMatromonial()" *ngIf="matri == 'no'" >
+        <ion-icon name="add-outline"></ion-icon>
+        <ion-label >Add</ion-label>
+      </ion-button>
+      
+    </ion-fab-list>
+  </ion-fab>
 
 
 

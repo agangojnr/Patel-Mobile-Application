@@ -14,6 +14,9 @@ import { PayPal } from "@ionic-native/paypal/ngx";
 import { Camera } from "@ionic-native/camera/ngx";
 import { Geolocation } from "@ionic-native/geolocation/ngx";
 import { DatePicker } from '@ionic-native/date-picker/ngx';
+import {IonMarqueeModule} from "ionic-marquee";
+import { IonicSelectableModule } from 'ionic-selectable';
+import { MatrifilterComponent } from "../app/Component/matrifilter/matrifilter.component";
 import {
   NativeGeocoder,
   NativeGeocoderResult,
@@ -21,8 +24,13 @@ import {
 } from "@ionic-native/native-geocoder/ngx";
 import { Stripe } from "@ionic-native/stripe/ngx";
 @NgModule({
-  declarations: [AppComponent],
-  entryComponents: [],
+  declarations: [
+    AppComponent,
+    MatrifilterComponent
+  ],
+  entryComponents: [
+    MatrifilterComponent
+  ],
   imports: [
     BrowserModule,
     IonicModule.forRoot({
@@ -30,6 +38,9 @@ import { Stripe } from "@ionic-native/stripe/ngx";
     }),
     AppRoutingModule,
     HttpClientModule,
+    IonicSelectableModule,  
+    IonMarqueeModule,
+      
   ],
   providers: [
     StatusBar,

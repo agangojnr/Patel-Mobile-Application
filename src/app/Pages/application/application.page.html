@@ -1,0 +1,309 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start" class="ion-no-margin">
+      <ion-back-button defaultHref="tabs/home" icon="chevron-back" mode="md" class="btn-back"></ion-back-button>
+    </ion-buttons>
+    <ion-title header-title> Membership Application Form</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding-horizontal">
+  
+ <ion-card>
+   <ion-card-header>
+     <ion-card-subtitle>
+       Personal Info
+     </ion-card-subtitle>
+   </ion-card-header>
+   
+   <ion-card-content>
+     
+      <div class="profile-div">
+        <div class="camera-icon" (click)="presentActionSheet()">
+          <ion-icon name="camera-sharp"></ion-icon>
+        </div>
+        <div class="hexagon hexagon1">
+          <div class="hexagon-in1">
+            <div class="hexagon-in2"
+              [style.backgroundImage]="'url('+(imgProfile ?  imgProfile : 'http://placehold.it/100x100' )+')'">
+            </div>
+          </div>
+        </div>
+      </div>
+     
+
+    <ion-item>
+      <ion-label position="floating" color="primary">Applicant's Name:</ion-label>
+      <ion-input [(ngModel)]="data.name"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating" color="primary">Father/Husband's Name:</ion-label>
+      <ion-input [(ngModel)]="data.fathername"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating" color="primary">Surname:</ion-label>
+      <ion-input [(ngModel)]="data.surname"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label color="primary">Native Vilage in India:</ion-label>      
+        <ionic-selectable
+          [(ngModel)]="data.native"
+          [items]="native"
+          itemValueField="native_id"
+          itemTextField="native_name"
+          [canSearch]="true"
+          (onChange)="portChange($event)">
+        </ionic-selectable>   
+    </ion-item>
+   </ion-card-content>
+ </ion-card>
+
+ <ion-card>
+  <ion-card-header>
+    <ion-card-subtitle>
+      Other Personal Info
+    </ion-card-subtitle>
+  </ion-card-header>
+   <ion-card-content>   
+  
+    <ion-item>
+      <ion-label position="fixed" color="tertiary">Date of Birth:</ion-label>
+      <ion-input type="text" (click)="showDatepicker()"  placeholder="Enter DOB" [(ngModel)]="data.dob" name="dob" required></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label color="tertiary">Nationality:</ion-label>      
+        <ionic-selectable
+          [(ngModel)]="data.nationality"
+          [items]="countries"
+          itemValueField="country_id"
+          itemTextField="country_name"
+          [canSearch]="true"
+          (onChange)="portChange($event)">
+        </ionic-selectable>   
+    </ion-item> 
+
+      <ion-item>
+        <ion-label color="tertiary">Blood Group:</ion-label>
+        <ion-select interface="popover" [(ngModel)]="data.bloodgroup">
+          <ion-select-option value="A-">A-</ion-select-option>
+          <ion-select-option value="A+">A+</ion-select-option>
+          <ion-select-option value="B-">B-</ion-select-option>
+          <ion-select-option value="B+">B+</ion-select-option>
+          <ion-select-option value="AB-">AB-</ion-select-option>
+          <ion-select-option value="AB+">AB+</ion-select-option>
+          <ion-select-option value="O-">O-</ion-select-option>
+          <ion-select-option value="O+">O+</ion-select-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-item>
+        <ion-label color="tertiary">Gender:</ion-label>
+        <ion-select interface="popover" [(ngModel)]="data.gender">
+          <ion-select-option value="female">Female</ion-select-option>
+          <ion-select-option value="male">Male</ion-select-option>
+        </ion-select>
+      </ion-item>
+
+    <ion-item>
+      <ion-label position="fixed" color="tertiary">P.O. Box:</ion-label>
+      <ion-input [(ngModel)]="data.pobox"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label color="tertiary">Town:</ion-label>      
+        <ionic-selectable
+          [(ngModel)]="data.town"
+          [items]="towns"
+          itemValueField="town_id"
+          itemTextField="town_name"
+          [canSearch]="true"
+          (onChange)="portChange($event)">
+        </ionic-selectable>   
+    </ion-item>
+
+    <ion-item>
+      <ion-label color="tertiary">Country:</ion-label>      
+        <ionic-selectable
+          [(ngModel)]="data.country"
+          [items]="countries"
+          itemValueField="country_id"
+          itemTextField="country_name"
+          [canSearch]="true"
+          (onChange)="portChange($event)">
+        </ionic-selectable>   
+    </ion-item>   
+    
+    <ion-item>
+      <ion-label position="fixed" color="tertiary">Mobile No.:</ion-label>
+      <ion-input [(ngModel)]="data.mobileno"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="fixed" color="tertiary">Occupation:</ion-label>
+      <ion-input [(ngModel)]="data.occupation"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating" color="tertiary">Physical Address:</ion-label>
+      <ion-input [(ngModel)]="data.phyaddress"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating" color="tertiary">Email Address:</ion-label>
+      <ion-input [(ngModel)]="data.email"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating" color="tertiary">Work Place Address:</ion-label>
+      <ion-input [(ngModel)]="data.workaddress"></ion-input>
+    </ion-item>
+   </ion-card-content>
+ </ion-card>
+
+
+ <ion-card>
+   <ion-card-header>
+    <ion-card-subtitle>
+      Spouse's Info
+    </ion-card-subtitle>
+   </ion-card-header>
+   <ion-card-content>    
+    
+    <ion-item>
+      <ion-label color="primary">Relationship:</ion-label>
+      <ion-select interface="popover" [(ngModel)]="data.relationship">
+        <div *ngFor="let item of relnship">
+          <ion-select-option value="{{item?.relation_id}}">{{item?.relation_desc}}</ion-select-option>  
+        </div>              
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating" color="primary">Spouse Name:</ion-label>
+      <ion-input [(ngModel)]="data.spousename"></ion-input>
+    </ion-item>
+    
+    <ion-item>
+      <ion-label color="primary">Native Vilage in India:</ion-label>      
+        <ionic-selectable
+          [(ngModel)]="data.spousenative"
+          [items]="native"
+          itemValueField="native_id"
+          itemTextField="native_name"
+          [canSearch]="true"
+          (onChange)="portChange($event)">
+        </ionic-selectable>   
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="fixed" color="primary">Date of Birth:</ion-label>
+      <ion-input type="text" (click)="showDatepicker()"  placeholder="Enter DOB" [(ngModel)]="data.spousedob" name="spousedob" required></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label color="primary">Nationality:</ion-label>      
+        <ionic-selectable
+          [(ngModel)]="data.spousenationality"
+          [items]="countries"
+          itemValueField="country_id"
+          itemTextField="country_name"
+          [canSearch]="true"
+          (onChange)="portChange($event)">
+        </ionic-selectable>   
+    </ion-item>  
+
+    <ion-item>
+      <ion-label color="primary">Blood Group:</ion-label>
+      <ion-select [(ngModel)]="data.spousebloodgroup" interface="popover">
+        <ion-select-option value="A-">A-</ion-select-option>
+        <ion-select-option value="A+">A+</ion-select-option>
+        <ion-select-option value="B-">B-</ion-select-option>
+        <ion-select-option value="B+">B+</ion-select-option>
+        <ion-select-option value="AB-">AB-</ion-select-option>
+        <ion-select-option value="AB+">AB+</ion-select-option>
+        <ion-select-option value="O-">O-</ion-select-option>
+        <ion-select-option value="O+">O+</ion-select-option>
+      </ion-select>
+    </ion-item>
+    
+   </ion-card-content>
+ </ion-card>
+
+ <ion-card>
+   <ion-card-header>
+     <ion-card-subtitle>
+       Registration Fee
+     </ion-card-subtitle>
+   </ion-card-header>
+   <ion-card-content>
+    <ion-item>
+      <ion-label color="tertiary">Membership Type:</ion-label>
+      <ion-select [(ngModel)]="data.membertype" interface="popover">
+        <ion-select-option value="ordinary">Ordinary</ion-select-option>
+        <ion-select-option value="life">Life Membership</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label color="tertiary">Mode of Payment:</ion-label>
+      <ion-select [(ngModel)]="data.paymentmode" interface="popover">
+        <ion-select-option value="cash">Cash</ion-select-option>
+        <ion-select-option value="mpesa">MPesa</ion-select-option>
+        <ion-select-option value="cheque">Cheque</ion-select-option>
+        <ion-select-option value="bank">Bank</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label position="fixed" color="tertiary">Ref No.:</ion-label>
+      <ion-input [(ngModel)]="data.paymentref"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="fixed" color="tertiary">Amount.:</ion-label>
+      <ion-input [(ngModel)]="data.amount"></ion-input>
+    </ion-item>
+   
+   </ion-card-content>
+ </ion-card>
+
+ <ion-card>
+  <ion-card-header>
+    <ion-card-subtitle>
+      Member Confirmation
+    </ion-card-subtitle>
+  </ion-card-header>
+  <ion-card-content>
+
+    <ion-item>
+      <ion-label color="tertiary">Proposed By:</ion-label>      
+        <ionic-selectable
+          [(ngModel)]="data.proposedby"
+          [items]="data"
+          itemValueField="user_id"
+          itemTextField="mbrname"
+          [canSearch]="true"
+          (onChange)="portChange($event)">
+        </ionic-selectable>   
+    </ion-item>
+    
+    <ion-item>
+      <ion-label color="tertiary">Seconded By:</ion-label>      
+        <ionic-selectable
+          [(ngModel)]="data.secondedby"
+          [items]="data"
+          itemValueField="user_id"
+          itemTextField="mbrname"
+          [canSearch]="true"
+          (onChange)="portChange($event)">
+        </ionic-selectable>   
+    </ion-item>
+    
+  </ion-card-content>
+</ion-card>
+
+</ion-content>
+<ion-footer class="ion-no-border">
+  <ion-toolbar>
+    <ion-button expand="block" class="ion-no-margin btn-general" (click)="doSaveApplication()">
+      Submit Application
+    </ion-button>
+  </ion-toolbar>
+</ion-footer>
+
+
+

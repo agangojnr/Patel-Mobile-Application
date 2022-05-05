@@ -1,0 +1,38 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start" class="ion-no-margin">
+      <ion-back-button defaultHref="tabs/home" icon="chevron-back" mode="md" class="btn-back"></ion-back-button>
+    </ion-buttons>
+<ion-title header-title> B/G {{this.api.bloodgroup}} in {{this.api.town_name}}</ion-title>
+  </ion-toolbar>
+  <ion-searchbar radious-searchbar placeholder="Quick Search " clearIcon="no" mode="md"
+  [(ngModel)]="term" searchIcon="../../../assets/svg_icon/Search_icon.svg"></ion-searchbar>
+
+</ion-header>
+
+<ion-content class="ion-padding-horizontal">
+ 
+    <ion-grid>
+    <ion-row>
+      <ion-card>         
+            <ion-list>
+               <ion-item *ngFor="let item of data |filter:term"  (click)="viewFamily(item?.user_id)">
+                  <ion-text color="tertiary">
+                    {{item?.firstname}} {{item?.midname}} {{item?.surname}}
+                  </ion-text>
+                  <ion-icon class="flex-right" slot="end" name="chevron-forward-outline"></ion-icon>
+               </ion-item>
+            </ion-list>        
+      </ion-card>
+
+      <ion-infinite-scroll threshold="15%" (ionInfinite)="loadMore($event)">
+        <ion-infinite-scroll-content
+          loadingSpinner="bubbles"
+          loadingText="Loading more users...">
+        </ion-infinite-scroll-content>
+      </ion-infinite-scroll>
+
+
+    </ion-row>
+  </ion-grid>
+</ion-content>

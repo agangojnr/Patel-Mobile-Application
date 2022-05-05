@@ -1,0 +1,60 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start" class="ion-no-margin">
+      <ion-back-button defaultHref="tabs/home" icon="chevron-back" mode="md" class="btn-back"></ion-back-button>
+    </ion-buttons>
+    <ion-title header-title>Advert Info</ion-title>
+  </ion-toolbar> 
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <ion-card-header>
+      <h5>{{data?.name}}</h5>
+      <ion-label><span class="sponser"></span> 
+        <span class="sponser1">{{data?.address}}</span>
+      </ion-label>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <ion-label><span class="sponser">Visit:</span> 
+        <span class="sponser1">{{data?.website}}</span> 
+      </ion-label>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-row>
+        <div class="back_image" [style.backgroundImage]="'url('+ data?.imageUri +')'">
+          <div class="overlay_div">
+            <div class="icn_flex">
+                <ion-icon name="heart-outline" style="width: 23px;"></ion-icon>
+                <ion-icon name="bag"></ion-icon>
+            </div>
+            <ion-label class="collection_lbl">{{data?.adtitle}}</ion-label>
+            <div class="line_div"></div>
+            
+            <ion-label class="off_lbl">{{data?.promotext}}</ion-label>
+            <ion-label class="white_lbl">{{data?.adinfo}}</ion-label>
+            
+        </div>
+        </div>
+       
+      </ion-row>
+      <ion-row>      
+        <ion-col size="6">
+            <ion-button expand="block" shape="round" fill="clear">
+              
+              <ion-icon slot="start" name="mail"></ion-icon>
+              <ion-label class="emailspan">{{data?.email}}</ion-label>
+            </ion-button>
+        </ion-col>
+        <ion-col size="6">
+            <ion-button expand="block" shape="round" fill="clear">
+              <ion-icon slot="start" name="call"></ion-icon>
+              <ion-label>{{data?.primary_contact}}</ion-label>
+            </ion-button>
+        </ion-col>
+        <ion-col size="8">
+                  
+        </ion-col>
+      </ion-row>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

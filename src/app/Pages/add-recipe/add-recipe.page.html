@@ -1,0 +1,53 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start" class="ion-no-margin">
+      <ion-back-button defaultHref="tabs/home" icon="chevron-back" mode="md" class="btn-back"></ion-back-button>
+    </ion-buttons>
+    <ion-title header-title> Create Recipe</ion-title>
+  </ion-toolbar> 
+
+</ion-header>
+
+<ion-content class="ion-padding-horizontal">
+ <ion-card>
+   <ion-card-content>
+    <ion-item >
+      <ion-label position="floating">Recipe Name</ion-label>
+      <ion-input expand="full" type="text" [(ngModel)]="data.description"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Ingredients</ion-label>
+      <ion-textarea expand="full" type="text" [(ngModel)]="data.ingredients"></ion-textarea>
+    </ion-item>
+    <ion-item>
+      <ion-textarea rows="8" cols="20" placeholder="Preparation procedure here..."  
+      expand="full" type="text" [(ngModel)]="data.instruction"></ion-textarea>
+    </ion-item>
+    <ion-item >
+      <ion-label class="img-pos">Upload/Take a Photo:</ion-label>  
+      <ion-icon name="camera-sharp" (click)="presentActionSheet()"></ion-icon>    
+    </ion-item>
+    
+    <div class="hexagon hexagon1">
+      <div class="hexagon-in1">
+        <div class="hexagon-in2"
+          [style.backgroundImage]="'url('+(imgProfile ?  imgProfile : 'http://placehold.it/100x100' )+')'">
+        </div>
+      </div>
+    </div>
+    
+    <ion-footer class="ion-no-border">
+      <ion-toolbar>        
+        <ion-button expand="block" class="ion-no-margin btn-general" (click)="doSaveRecipe()">
+          Save Data
+        </ion-button>
+      </ion-toolbar>
+    </ion-footer>
+
+   </ion-card-content>
+ </ion-card>
+
+</ion-content>
+
+
+

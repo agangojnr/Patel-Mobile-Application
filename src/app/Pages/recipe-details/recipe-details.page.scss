@@ -1,0 +1,90 @@
+ion-header {
+    ion-toolbar {
+      border-radius: 0px 0px 20px 20px;
+      --background: var(--ion-color-dark-blue3);
+    }
+    h3{
+      color: aliceblue;
+    }
+
+    ion-icon{
+      color: aliceblue;
+      font-size: 30px;
+    }
+      
+    
+  }
+  ion-content {
+   --padding-top: 20px;
+    .hexagon {
+      overflow: hidden;
+      visibility: hidden;
+      transform: rotate(120deg);
+      cursor: pointer;
+    }
+    .hexagon-in1 {
+      overflow: hidden;
+      width: 100%;
+      height: 100%;
+      transform: rotate(-60deg);
+    }
+    .hexagon-in2 {
+      width: 100%;
+      height: 100%;
+      border-radius: 80px;
+     
+    }
+  
+    .hexagon1 {
+      width: 100px;
+      height: 90px;
+      margin: 0px auto;
+    }
+  
+    .name-text {
+      font-family: "Fivo_sans_medium";
+      color: var(--ion-color-blue);
+      margin-top: 10px;
+    }
+    .btn-edit{
+    color: var(--ion-color-white);
+  
+  
+    }
+    ion-list {
+     
+      ion-item {
+        --padding-start: 8px;
+        ion-icon {
+          color: var(--ion-color-dark-blue3);
+          font-size: 18px;
+          
+        }
+        ion-label {
+          font-size: 16px;
+          font-family: "Fivo_sans_medium";
+          color: var(--ion-color-blue);
+        }
+      }
+    }
+  
+    ion-card {
+      background-color: white;
+      //--background: var(--ion-color-tertiary-shade);
+      margin: 0 !important;
+      padding: 0 !important;
+      width: 100%;
+    }
+
+    
+    
+    ion-grid {
+      --ion-grid-padding: 8px;
+      --ion-grid-width: 8px;
+      --ion-grid-column-padding: 8px;
+    }
+  }
+
+  
+
+  

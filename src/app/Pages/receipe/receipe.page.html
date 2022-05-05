@@ -1,0 +1,53 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start" class="ion-no-margin">
+      <ion-back-button defaultHref="tabs/home" icon="chevron-back" mode="md" class="btn-back"></ion-back-button>
+    </ion-buttons>
+    <ion-title header-title> Recipes</ion-title>
+  </ion-toolbar>
+  <ion-searchbar radious-searchbar placeholder="Quick Search " clearIcon="no" mode="md"
+  [(ngModel)]="term" searchIcon="../../../assets/svg_icon/Search_icon.svg"></ion-searchbar>
+
+
+</ion-header>
+
+<ion-content class="ion-padding-horizontal">
+ <div no-data *ngIf="data?.length == 0">
+    <img src="../../../assets/images/no-data-icon-10.jpg" alt="no data">
+  </div>
+
+    <ion-grid>
+    <ion-row>
+      <ion-col size="12" size-sm wrap *ngFor="let item of data|filter:term">
+        <ion-card class="ion-activatable" (click)="recipedetails(item?.id)" >
+          <ion-ripple-effect></ion-ripple-effect>
+          <img src="{{this.api.loc_imageUrl+'/'+item?.picurl}}">         
+          <ion-card-header>           
+            <ion-card-subtitle>
+              <h3 color="primary">{{item?.description}}</h3>
+              <h6 color="primary">Done By: <span>{{item?.name}}</span> </h6>  
+              <h6 color="primary">Date: <span>{{item?.date | date :'dd MMMM yyyy'}}</span></h6>
+              
+            </ion-card-subtitle>
+          </ion-card-header>         
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button color="success" (click)="addrecipe()">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
+  <ion-infinite-scroll threshold="15%" (ionInfinite)="loadMore($event)">
+    <ion-infinite-scroll-content
+      loadingSpinner="bubbles"
+      loadingText="Loading more users...">
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+
+</ion-content>
+

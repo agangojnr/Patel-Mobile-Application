@@ -1,96 +1,159 @@
 <ion-header class="ion-no-border">
   <ion-toolbar>
-    <h3>Member, {{rdata?.name}}</h3>
-    <p>Patel BrotherHood </p>
+
+    <ion-title class="ion-text-center" >
+      
+      <h5>Patel BrotherHood Nairobi</h5>
+      <p>Sab ka  Saath Samaj ka Vikas</p>
+  </ion-title>
+
+    <ion-buttons slot="start" style='color:white'>
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+   
   </ion-toolbar>
   <!--<ion-searchbar radious-searchbar placeholder="Search for any lead" clearIcon="no" mode="md"
     searchIcon="../../../assets/svg_icon/Search_icon.svg" [(ngModel)]="term"></ion-searchbar>-->
 </ion-header>
 
-<ion-content class="ion-padding-horizontal">
- <!-- <ion-refresher slot="fixed" id="refresher" (ionRefresh)="doRefresh($event)">
-    <ion-refresher-content></ion-refresher-content>
-  </ion-refresher>-->
- <!-- <h5 class="info-title">Puplic Health Facilities</h5>
-  <p class="no_data_p" *ngIf="data?.popular_category?.length==0">No data</p>
-  <div class="popular-category">
+<ion-content>
 
-    <div class="main-section" (click)="viewList(item)" *ngFor="let item of data.popular_category |filter:term">
-      <img [src]="item?.imageUri" alt="">
-      <div class="text-section">
-        <p class="ion-no-margin">{{item?.name}}</p>
-      </div>
-    </div>
-  </div>-->
-    <h5 class="info-title">Hot Deals</h5>
-  <p class="no_data_p" *ngIf="data?.featured?.length==0">No data</p>
-  <div class="featured_venue">
-    <div class="featured-venues-section" *ngFor="let item of data?.featured |filter:term"
-      (click)="viewSlonDetail(item?.id)">
-      <img [src]="item?.imageUri" alt="">
-      <h6 class="salon-name">{{item?.name}}</h6>
-      <p class="salon-address">{{item?.sponsor_name}}</p>
+
+    <ion-marquee speed="30" style="height: 24px;background-color:cornflowerblue;margin-top: 10px;" [text]="data.marqueetext" >
+    </ion-marquee>
+
+    
+  <h5 class="info-title">Hot Deals</h5>
+
+  <ion-slides pager="ios">
+          <ion-slide *ngFor="let item of data.featured">
+              <div class="back_image" [style.backgroundImage]="'url('+ item?.imageUri +')'">
+                <div class="overlay_div">
+                    <!--<div class="icn_flex">                        
+                      <span class="email">{{item?.email}}</span>                       
+                    </div>-->
+                    <div class="icn_flex">                        
+                      <span class="phone"> <ion-icon name="call"></ion-icon> {{item?.primary_contact}}</span>                       
+                    </div>
+                    
+                    <ion-label class="collection_lbl">{{item?.adtitle}}</ion-label>
+                    <div class="line_div"></div>
+                    
+                    <ion-label class="off_lbl">{{item?.promotext}}</ion-label>
+                    <ion-label class="white_lbl">{{item?.adinfo}}</ion-label>
+
+                    <ion-button size="small" shape="round" (click)="goToAdDetails(item?.id)">
+                      Explore Ad 
+                    </ion-button>
+                </div>
+              </div>
+          </ion-slide>
+      </ion-slides>
+
+<div class="more-categories-section" style="margin-top: 10px;">
+
+  <div class="main-section"  (click)="doMyFamily()">
+    <img src="../assets/images/family.jpg">
+    
+    <div class="text-section">
+      <p class="ion-no-margin ion-text-center">My Family</p>
     </div>
   </div>
-
-
- <!--<h5 class="info-title">Nairobi Community</h5>-->
+  <div class="main-section"  (click)="otherFamily()"> 
+    <img src="../assets/images/family_info.jpg">
+    
+    <div class="text-section">
+      <p class="ion-no-margin ion-text-center">Members List</p>
+    </div>
+  </div>
   
-  <div class="more-categories-section">
-
-    <div class="main-section"  (click)="doMyFamily()">
-      <img src="../assets/images/family.jpg">
-      
-      <div class="text-section">
-        <p class="ion-no-margin ion-text-center">My Family</p>
-      </div>
-    </div>
-    <div class="main-section"  (click)="otherFamily()">
-      <img src="../assets/images/family_info.jpg">
-      
-      <div class="text-section">
-        <p class="ion-no-margin ion-text-center">Family Info</p>
-      </div>
-    </div>
+  <div class="main-section"  (click)="viewMatrimonial(item)">
+    <img src="../assets/images/matrimonial.jpg">
     
-    <div class="main-section"  (click)="viewMatrimonial(item)">
-      <img src="../assets/images/matrimonial.jpg">
-      
-      <div class="text-section">
-        <p class="ion-no-margin ion-text-center">Matrimonial</p>
-      </div>
+    <div class="text-section">
+      <p class="ion-no-margin ion-text-center">Matrimonial</p>
     </div>
+  </div>
+  <div class="main-section" (click)="viewAllads()">
+    <img src="../assets/images/advert2.jpg">
     
-    <div class="main-section"  (click)="viewBusiness()">
-      <img src="../assets/images/business_info.jpg">
-      
-      <div class="text-section">
-        <p class="ion-no-margin ion-text-center">Business Info</p>
-      </div>
+    <div class="text-section">
+      <p class="ion-no-margin ion-text-center">Adverts</p>
     </div>
-
-    <div class="main-section"  (click)="viewJobs()">
-      <img src="../assets/images/job_info.jpg">
-      
-      <div class="text-section">
-        <p class="ion-no-margin ion-text-center">Jobs Info</p>
-      </div>
+  </div>
+  
+  <div class="main-section"  (click)="viewBusiness()">
+    <img src="../assets/images/business_info.jpg">
+    
+    <div class="text-section">
+      <p class="ion-no-margin ion-text-center">Businesses</p>
     </div>
+  </div>
 
+  <div class="main-section"  (click)="viewJobs()">
+    <img src="../assets/images/job_info.jpg">
+    
+    <div class="text-section">
+      <p class="ion-no-margin ion-text-center">Jobs Info</p>
+    </div>
+  </div>
+  <div class="main-section" (click)="recipelist()" >
+    <img src="../assets/images/recipe.jpg">
+    
+    <div class="text-section">
+      <p class="ion-no-margin ion-text-center">Receipes</p>
+    </div>
+  </div>
  
+  <div class="main-section"  (click)="blooddonation()" >
+    <img src="../assets/images/donnation.png">
     
-    <div class="main-section"  (click)="viewCommitee()">
-      <img src="../assets/images/committee.jpg">
-      
-      <div class="text-section">
-        <p class="ion-no-margin ion-text-center">Committee</p>
-      </div>
+    <div class="text-section">
+      <p class="ion-no-margin ion-text-center">Blood Donner</p>
     </div>
-
   </div>
 
 
+  <div class="main-section"  (click)="communication()">
+    <img src="../assets/images/communication.jpg">
+    
+    <div class="text-section">
+      <p class="ion-no-margin ion-text-center">Information</p>
+    </div>
+  </div>
+  <div class="main-section"  (click)="request()">
+    <img src="../assets/images/request.jpg">
+    
+    <div class="text-section">
+      <p class="ion-no-margin ion-text-center">Request</p>
+    </div>
+  </div>
+  <div class="main-section"  (click)="application()">
+    <img src="../assets/images/application_form.jpg">
+    
+    <div class="text-section">
+      <p class="ion-no-margin ion-text-center">Application Form</p>
+    </div>
+  </div>
+  <div class="main-section"  (click)="viewCommitee()">
+    <img src="../assets/images/committee.jpg">
+    
+    <div class="text-section">
+      <p class="ion-no-margin ion-text-center">Committee</p>
+    </div>
+  </div>
+
+</div>
 
 
+
+<ion-fab vertical="bottom" horizontal="end" slot="fixed" mode="ios" *ngIf="data.unread > 0" >
+
+  <ion-icon slot="start" name="mail"></ion-icon>
+    <ion-badge color="danger" (click)="communication()">{{data.unread}}
+  </ion-badge>
+
+</ion-fab>
 
 </ion-content>
+

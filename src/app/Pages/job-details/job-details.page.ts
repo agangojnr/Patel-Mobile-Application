@@ -17,15 +17,10 @@ export class JobDetailsPage implements OnInit {
     private util: UtilService) { 
   	this.util.startLoad();
     this.api.getDataWithToken("jobDetailsInfo/" + this.api.job_id).subscribe(
-      (res: any) => {
+      (res: any) => { //console.log(res.data);
         if (res.success) {
           this.util.dismissLoader();
           this.data = res.data;
-          //console.log(this.data);
-          //this.subcounty=this.data.get_sub_counties;
-
-          //this.data.start_time = this.transform(this.data.start_time);
-          //this.data.end_time = this.transform(this.data.end_time);
         }
       },
       (err) => {

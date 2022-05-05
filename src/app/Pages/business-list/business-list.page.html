@@ -1,0 +1,79 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start" class="ion-no-margin">
+      <ion-back-button defaultHref="tabs/home" icon="chevron-back" mode="md" class="btn-back"></ion-back-button>
+    </ion-buttons>
+    <ion-title header-title>{{ catgoryName }} </ion-title>
+  </ion-toolbar>
+  <ion-searchbar radious-searchbar placeholder="Search here" clearIcon="no" mode="md"
+    searchIcon="../../../assets/svg_icon/Search_icon.svg" [(ngModel)]="term"></ion-searchbar>
+</ion-header>
+
+<ion-content>
+
+  <div class="search_div">
+    <div class="chips_div">
+      <div class="test" [class.active]="id == i" *ngFor="let item of moviesCat; let i = index">
+        <ion-label class="chip" (click)="selectCat(item)">{{item}}</ion-label>
+        <span class="line_span" *ngIf="id == item"></span>
+      </div>
+    </div>
+  </div>
+
+
+    <div class="search_card" *ngFor="let item of data">
+
+      <div class="search_flex">        
+
+        <div class="search_detail">
+          <ion-label class="heal_lbl">    {{item?.business_name}} </ion-label><br/>
+          <ion-label class="small"><span>{{item?.physicaladdress}}</span></ion-label>
+
+          <div class="inner_flex">
+            <ion-label class="small">{{item?.description}} </ion-label>
+          </div>
+          
+          <ion-item lines="none" class="contacts">
+            <div class="row">
+              <ion-label> Website: </ion-label>
+              <ion-label> Email: </ion-label>
+              <ion-label> Contact: </ion-label>
+            </div>
+            <div class="row">
+              <ion-label class="small"> <span>{{item?.website}}</span></ion-label>
+              <ion-label class="small"> <span>{{item?.business_email}}</span></ion-label>
+              <ion-label class="small"> <span>{{item?.contact}}</span></ion-label>
+            </div>
+          </ion-item>
+          
+          
+          
+        </div>
+      </div>
+
+      <div class="btn_flex">
+        <div class="btns1">
+          <ion-button class="b1" expand="block" shape="round" fill="clear">
+            <ion-icon slot="start" name="call"></ion-icon>
+            <ion-label>Call Now</ion-label>
+          </ion-button>
+        </div>
+        <div class="btns2">
+          <ion-button class="b2" expand="block" shape="round">
+            <ion-label>Get Best Deal</ion-label>
+          </ion-button>
+        </div>
+      </div>
+
+    </div>
+
+</ion-content>
+
+<!--<ion-footer class="ion-no-border">
+  <ion-toolbar>
+    <ion-button expand="block" class="ion-no-margin btn-general" (click)="myBusinesses()">
+      My Businesses
+      <ion-icon class="float-right" slot="end" name="chevron-forward-outline"></ion-icon>
+    </ion-button>
+  </ion-toolbar>
+</ion-footer>-->

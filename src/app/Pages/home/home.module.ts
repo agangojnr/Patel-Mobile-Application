@@ -8,6 +8,7 @@ import { HomePageRoutingModule } from "./home-routing.module";
 
 import { HomePage } from "./home.page";
 import { Ng2SearchPipeModule } from "ng2-search-filter";
+import {IonMarqueeModule} from "ionic-marquee";
 @NgModule({
   imports: [
     CommonModule,
@@ -15,6 +16,7 @@ import { Ng2SearchPipeModule } from "ng2-search-filter";
     IonicModule,
     Ng2SearchPipeModule,
     HomePageRoutingModule,
+    IonMarqueeModule,
   ],
   declarations: [HomePage],
 })

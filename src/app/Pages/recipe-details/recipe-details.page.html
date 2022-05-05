@@ -1,0 +1,50 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start" class="ion-no-margin">
+      <ion-back-button defaultHref="tabs/home" icon="chevron-back" mode="md" class="btn-back"></ion-back-button>
+    </ion-buttons>
+    <ion-title header-title>{{data?.description}}</ion-title>
+    <ion-icon slot="end" name="ellipsis-vertical-outline"></ion-icon>  
+  </ion-toolbar> 
+</ion-header>
+
+<ion-content class="ion-padding-horizontal">
+ 
+    <ion-grid>
+    <ion-row>
+      <ion-card>
+          <ion-ripple-effect></ion-ripple-effect>
+          <img src="{{this.api.loc_imageUrl+'/'+data?.picurl}}">  
+          
+            <ion-item>
+              
+              <ion-list>
+                  <h5>Ingredients</h5>
+                
+                <p>{{data?.ingredients}}</p>
+              </ion-list>
+              
+            </ion-item>
+            <ion-item>
+              <ion-list>
+                  <h5>Preparation Instruction</h5>              
+                
+                <p>{{data?.instructions}}</p>
+              </ion-list>
+              
+            </ion-item>
+  
+            <ion-item>
+              <ion-list>
+                <ion-text>Created On: {{data?.date | date :'dd MMMM yyyy'}}</ion-text>
+                <h3>By: {{data?.name}}</h3>
+              </ion-list>         
+            </ion-item>         
+          
+      </ion-card>
+    </ion-row>
+  </ion-grid>
+
+</ion-content>
+
+

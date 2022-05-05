@@ -18,7 +18,7 @@ typeid: any = "";
   err: any = {};
    catgoryName: any;
 
-   genderFilter: any = { bus_job_cat_id: 0 };
+   genderFilter: any = { id: 0 };
   constructor(
   	private navCtrl: NavController,
   	 private modalCtrl: ModalController,
@@ -67,10 +67,9 @@ typeid: any = "";
   doRefresh(event) {
    
     this.api.getDataWithToken("jobData" ).subscribe(
-      (res: any) => {
+      (res: any) => { //console.log("Yessss");
         if (res.success) {
-          this.data = res.data;
-          //console.log(this.data);
+          this.data = res.data;          
           event.target.complete();
         }
       },
@@ -111,14 +110,11 @@ typeid: any = "";
 
   getUserDate() {
 
-
-     //this.util.startLoad();
     this.api.getDataWithToken("jobData").subscribe(
-      (res: any) => {
+      (res: any) => { //console.log(res.jobs);
         if (res.success) {
-         // this.util.dismissLoader();
           this.data = res.data;
-          //console.log("this.data: ", this.data);
+          
         }
       },
       (err) => {
@@ -169,11 +165,16 @@ typeid: any = "";
 
   
 
-  viewJob(job_id){
-      this.api.job_id = job_id;
+  viewJob(id){
+      this.api.job_id = id;
     
       //console.log(user_id);
     this.navCtrl.navigateRoot("/job-details");
+  }
+
+  myJobs(){
+    //console.log(user_id);
+  this.navCtrl.navigateRoot("/my-jobs");
   }
 
 
