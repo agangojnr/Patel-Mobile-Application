@@ -1,0 +1,46 @@
+ion-header {
+    ion-toolbar {
+      border-radius: 0px 0px 20px 20px;
+      --background: var(--ion-color-dark-blue3);
+    }
+  }
+  ion-content {
+    ion-card-title{
+        text-align: center;
+    }
+  
+   
+
+
+    .search_detail{
+        padding-left: 10px;
+
+        .heal_lbl{
+            font-weight: 700;
+            font-size: 16px;
+            margin-bottom: 5px;
+            color: blue;
+            text-transform: capitalize;
+            font-weight: bolder;
+        }
+
+        
+
+        .inner_flex{
+            display: flex;
+            margin-top: 7px;
+            
+            ion-text{
+                p{
+                    font-family: "Times New Roman";                    
+                    font-size: 14px;
+                    color: rgb(0, 0, 0);
+                    .small{
+                        color: blue;
+                    }
+                }    
+            }
+        }
+    }
+  }
+  

@@ -269,7 +269,11 @@ const routes: Routes = [
   {
     path: 'ad-details',
     loadChildren: () => import('./Pages/ad-details/ad-details.module').then( m => m.AdDetailsPageModule)
+  },  {
+    path: 'history',
+    loadChildren: () => import('./Pages/history/history.module').then( m => m.HistoryPageModule)
   }
+
 
 
 

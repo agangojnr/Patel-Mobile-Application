@@ -1,5 +1,9 @@
+
+
 import { ApiService } from "./services/api.service";
 import { Component, ViewChildren, QueryList } from "@angular/core";
+
+
 
 import {
   Platform,
@@ -20,6 +24,29 @@ export class AppComponent {
   @ViewChildren(IonRouterOutlet) routerOutlets: QueryList<IonRouterOutlet>;
   lastTimeBackPress = 0;
   timePeriodToExit = 2000;
+  currentPageTitle = 'Home';
+  appPages = [
+    {
+      title: 'Home',
+      url: '',
+      icon: 'easel'
+    },
+    {
+      title: 'My Family',
+      url: '/offer',
+      icon: 'person'
+    },
+    {
+      title: 'Settings',
+      url: '/tabs/profile',
+      icon: 'settings'
+    },
+    {
+      title: 'History',
+      url: '/history',
+      icon: 'archive'
+    }
+  ];
   constructor(
     private platform: Platform,
     private splashScreen: SplashScreen,
@@ -94,7 +121,7 @@ export class AppComponent {
   }
   async showToast() {
     const toast = await this.toastController.create({
-      message: "press back again to exit App.",
+      message: "Press back again to exit App.",
       duration: 2000,
       cssClass: "leaveToast",
     });
