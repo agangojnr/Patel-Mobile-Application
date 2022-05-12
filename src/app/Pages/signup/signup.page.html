@@ -30,6 +30,10 @@
     <ion-input custom-input type="email" placeholder="Email" [(ngModel)]="data.email" name="email" required></ion-input>
     <p class="err" *ngIf="err?.email">{{err?.email}}*</p>
 
+    <p input-label>Username</p>
+    <ion-input custom-input type="username" placeholder="Username" [(ngModel)]="data.username" name="username" required></ion-input>
+    <p class="err" *ngIf="err?.username">{{err?.username}}*</p>
+
     <p input-label>Password</p>
     <ion-input custom-input [type]="showpassword ? 'text' : 'password'" placeholder="Password" name="password"
       [(ngModel)]="data.password" required>

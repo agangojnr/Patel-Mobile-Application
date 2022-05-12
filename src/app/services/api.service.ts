@@ -17,6 +17,7 @@ export class ApiService {
   user_id: any;
   job_id:any;
   ad_id:any;
+  usertype:any;
   ages:any = [];
   job_title:any;
   member_id:any;

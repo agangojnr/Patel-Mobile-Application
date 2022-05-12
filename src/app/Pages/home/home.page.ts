@@ -14,6 +14,7 @@ export class HomePage implements OnInit {
   datarun: any;
   rdata: any = {};
   err: any = {};
+  usertype:any;
 
   
 
@@ -64,8 +65,9 @@ export class HomePage implements OnInit {
   getUserDate() {
 
       this.api.getDataWithToken("profile").subscribe(
-        (res: any) => {
+        (res: any) => { 
           this.rdata = res;
+          this.api.usertype = res.user_type;
         },
         (err) => {
           this.err = err.error.errors;
@@ -113,8 +115,8 @@ export class HomePage implements OnInit {
     this.navCtrl.navigateForward("/blood-donnation");   
   }
 
-  application(){
-    this.navCtrl.navigateForward("/application"); 
+  history(){
+    this.navCtrl.navigateForward("/history"); 
   }
 
   request(){

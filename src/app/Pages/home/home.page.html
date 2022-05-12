@@ -6,7 +6,7 @@
       <p>Sab ka  Saath Samaj ka Vikas</p>
     </ion-title>
 
-    <ion-buttons slot="start" style='color:white'>
+    <ion-buttons slot="start" style='color:white' *ngIf="rdata.user_type != 'applicant'">
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
    
@@ -19,7 +19,7 @@
     searchIcon="../../../assets/svg_icon/Search_icon.svg" [(ngModel)]="term"></ion-searchbar>-->
 </ion-header>
 
-<ion-content>
+<ion-content *ngIf="rdata.user_type != 'applicant'" >
 
 
     <ion-marquee speed="30" style="height: 24px;background-color:cornflowerblue;margin-top: 10px;" [text]="data.marqueetext" >
@@ -131,11 +131,11 @@
       <p class="ion-no-margin ion-text-center">Request</p>
     </div>
   </div>
-  <div class="main-section"  (click)="application()">
-    <img src="../assets/images/application_form.jpg">
+  <div class="main-section"  (click)="history()">
+    <img src="../../../assets/images/typesend.png">
     
     <div class="text-section">
-      <p class="ion-no-margin ion-text-center">Application Form</p>
+      <p class="ion-no-margin ion-text-center">History</p>
     </div>
   </div>
   <div class="main-section"  (click)="viewCommitee()">
@@ -158,5 +158,17 @@
 
 </ion-fab>
 
+</ion-content>
+
+<ion-content *ngIf="rdata.user_type == 'applicant'" >
+  <div class="more-categories-section" style="margin-top: 10px; padding-left: 20px;">
+    <div class="main-section"  (click)="application()">
+      <img src="../assets/images/application_form.jpg">
+      
+      <div class="text-section">
+        <p class="ion-no-margin ion-text-center">Application Form</p>
+      </div>
+    </div>
+  </div>
 </ion-content>
 
