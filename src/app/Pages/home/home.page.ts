@@ -135,5 +135,9 @@ export class HomePage implements OnInit {
     this.api.ad_id = id;
     this.navCtrl.navigateForward("/ad-details"); 
   }
+
+  application(){
+    this.navCtrl.navigateForward("/application"); 
+  }
   
 }
